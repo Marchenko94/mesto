@@ -1,0 +1,30 @@
+/* 
+.profile__edit-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 15px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+.profile__edit-icon:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+@media screen and (max-width: 680px){
+    .profile__edit-icon {
+      width: 18px;
+      height: 18px;
+      margin-top: 8px;
+  }
+  } */
+  .profile__edit-icon {
+    width: 24px;
+    height: 24px;
+  }
+  @media screen and (max-width: 680px){
+    .profile__edit-icon {
+      width: 18px;
+      height: 18px;
+  }
+  }

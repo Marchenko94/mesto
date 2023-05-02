@@ -1,0 +1,28 @@
+.popup__input-button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #000000;
+  border-radius: 2px;
+  border: 0;
+  padding: 0;
+  max-width: 358px;
+  min-height: 50px;
+  margin-top: 48px;
+}
+.popup__input-button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+@media screen and (max-width: 680px) {
+    .popup__input-button {
+      font-size: 14px;
+      line-height: 17px;
+      margin-top: 45px;
+      max-width: 238px;
+      min-height: 46px;
+    }
+  }
