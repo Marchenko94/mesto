@@ -1,4 +1,4 @@
-.popup__input-name {
+.popup__input-info {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -11,9 +11,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
 }
+.popup__input-info:last-of-type {
+  margin-bottom: 0;
+}
 
 @media screen and (max-width: 680px) {
-  .popup__input-name {
+  .popup__input-info {
     padding-bottom: 9px;
   }
 }

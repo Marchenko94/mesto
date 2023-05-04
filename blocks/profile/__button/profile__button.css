@@ -1,7 +1,9 @@
 .profile__button {
     padding: 0;
     border: 0;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
     
 }
 .profile__button:hover {
@@ -11,5 +13,6 @@
 @media screen and (max-width: 480px) {
     .profile__button {
       display: flex;
+      margin-top: 33px;
     }
   }
