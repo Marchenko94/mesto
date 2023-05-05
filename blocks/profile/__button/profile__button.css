@@ -9,7 +9,7 @@
     opacity: 0.6;
     cursor: pointer;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 680px) {
     .profile__button {
       display: flex;
       margin-top: 33px;

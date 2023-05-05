@@ -23,12 +23,12 @@
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
                             <p class="profile__status">Исследователь океана</p>
                         </div>
-                        <button class="profile__edit-button profile__popup-opened" type="submit">
+                        <button class="profile__edit-button profile__popup-opened" type="button">
                             <img class="profile__edit-icon" src="images/Edit_Button.svg" alt="Кнопка редактирования">
                         </button>
                     </div>
                 </div>
-                <button class="profile__button" type="submit">
+                <button class="profile__button" type="button">
                     <img class="profile__icon" src="images/Vector.svg" alt="Кнопка добавления">
                 </button>
             </section>
@@ -37,7 +37,7 @@
                     <img class="element__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Разрушенный храм">
                     <div class="element__text-like">
                         <h2 class="element__text">Карачаевск</h2>
-                        <button type="submit" class="element__like element__like_active"></button>
+                        <button type="button" class="element__like element__like_active"></button>
                     </div>
                 </article>
                 <article class="element">
@@ -84,11 +84,11 @@
         </footer>
         <div class="popup">
             <div class="popup__container">
-                <button class="popup__icon" type="submit"> <img src="images/Close_Icon.png" alt="Иконка закрытия" class="popup__closed"></button>
+                <button class="popup__close-button" type="button"> <img src="images/Close_Icon.png" alt="Иконка закрытия" class="popup__closed"></button>
                 <h3 class="popup__header-text">Редактировать профиль</h3>
                 <form class="popup__input" name="form">
-                    <input name="name" type="text" class="popup__input-info popup__input-info_type_name" placeholder="name" required>
-                    <input name="hobby" type="text" class="popup__input-info popup__input-info_type_hobby" placeholder="hobby" required>
+                    <input name="name" type="text" class="popup__input-info popup__input-info_type_name" placeholder="Имя" required>
+                    <input name="hobby" type="text" class="popup__input-info popup__input-info_type_hobby" placeholder="Хобби" required>
                     <button type="submit" class="popup__input-button">
                         Сохранить
                     </button>
