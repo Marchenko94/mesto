@@ -38,7 +38,7 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-        <div class="popup">
+        <div class="popup popup_edit-profile">
             <div class="popup__container">
                 <button class="popup__close-button" type="button"> <img class="popup__closed" src="images/Close_Icon.png" alt="Иконка закрытия"></button>
                 <h3 class="popup__header-text">Редактировать профиль</h3>
@@ -55,10 +55,10 @@
             <div class="popup__container">
                 <button class="popup__close-button popup__closed-cards" type="button"> <img class="popup__closed" src="images/Close_Icon.png" alt="Иконка закрытия"></button>
                 <h3 class="popup__header-text">Новое место</h3>
-                <form class="popup__input" name="form">
-                    <input name="name" type="text" class="popup__input-info popup__input-info_type_name" placeholder="Название" required>
-                    <input name="link" type="text" class="popup__input-info popup__input-info_type_hobby" placeholder="Ссылка на картинку" required>
-                    <button type="submit" class="popup__input-button">
+                <form class="popup__input popup__input-reset" name="form">
+                    <input name="name" type="text" class="popup__input-info popup__input-info_type_place" placeholder="Название" autocomplete="off" required>
+                    <input name="link" type="text" class="popup__input-info popup__input-info_type_link" placeholder="Ссылка на картинку" autocomplete="off" required>
+                    <button type="submit" class="popup__input-button popup__input-button-create">
                         Создать
                     </button>
                 </form>
@@ -85,7 +85,7 @@
         </template>
     </div>
     <script type="module" src="scripts/index.js"></script>
-    <script src="scripts/array.js"></script>
+    <script src="scripts/constants.js"></script>
 </body>
 
 </html>
