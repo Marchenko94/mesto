@@ -1,38 +1,39 @@
 const buttonPopupOpened = document.querySelector('.profile__popup-opened'); 
-const popup = document.querySelector('.popup_edit-profile'); 
+const popupEditProfile = document.querySelector('.popup_edit-profile'); 
 const buttonPopupClosed = document.querySelector('.popup__closed'); 
 const formElement = document.querySelector('.popup__input');  
 const nameInput = document.querySelector('.popup__input-info_type_name');  
 const jobInput = document.querySelector('.popup__input-info_type_hobby');  
-const title = document.querySelector('.profile__name'); 
-const job = document.querySelector('.profile__status'); 
+const textNameInput = document.querySelector('.profile__name'); 
+const statusProfileInput = document.querySelector('.profile__status'); 
 const popupFullScreen = document.querySelector('.popup_full_screen'); 
 const imagePopupFullScreen = popupFullScreen.querySelector('.popup__image'); 
 const textPopupFullScreen = popupFullScreen.querySelector('.popup__text'); 
-const closePopupFullScreen = popupFullScreen.querySelector('.popup__closed'); 
+const popupCloseFullScreen = popupFullScreen.querySelector('.popup__closed-button-full-screen'); 
 const elementsCards = document.querySelector('.elements'); 
 const templateCard = document.querySelector('.card').content; 
 const buttonPopupOpenedCards = document.querySelector('.profile__popup-opened-cards'); 
 const popupAddCards = document.querySelector('.popup_add_cards'); 
 const buttonPopupClosedCards = document.querySelector('.popup__closed-cards'); 
-const createCardButton = document.querySelector('.popup__input-button-create'); 
-const inputName = document.querySelector('.popup__input-info_type_place'); 
-const inputLink = document.querySelector('.popup__input-info_type_link');
+const buttonCreateCard = document.querySelector('.popup__input-button-create'); 
+const inputNamePlace = document.querySelector('.popup__input-info_type_place'); 
+const inputLinkImage = document.querySelector('.popup__input-info_type_link');
+const formElementReset = document.querySelector('.popup__input-reset');
 
 const togglePopupState = (popupToToggle) => popupToToggle.classList.toggle('popup_opened') 
 buttonPopupOpened.addEventListener('click', () => { 
-    togglePopupState(popup); 
-    nameInput.value = title.textContent; 
-    jobInput.value = job.textContent; 
+    togglePopupState(popupEditProfile); 
+    nameInput.value = textNameInput.textContent; 
+    jobInput.value = statusProfileInput.textContent; 
 } 
 ); 
 
-buttonPopupClosed.addEventListener('click', () => togglePopupState(popup)); 
+buttonPopupClosed.addEventListener('click', () => togglePopupState(popupEditProfile)); 
 function handleFormSubmit (evt) { 
     evt.preventDefault(); 
-       title.textContent = nameInput.value; 
-       job.textContent = jobInput.value; 
-       togglePopupState(popup);
+       textNameInput.textContent = nameInput.value; 
+       statusProfileInput.textContent = jobInput.value; 
+       togglePopupState(popupEditProfile);
 } 
 formElement.addEventListener('submit', handleFormSubmit); 
 
@@ -40,39 +41,45 @@ formElement.addEventListener('submit', handleFormSubmit);
 const togglePopupCards = (popupToToggleCards) => popupToToggleCards.classList.toggle('popup_opened'); 
 
 buttonPopupOpenedCards.addEventListener('click', () => {
-    inputName.value = '';
-    inputLink.value = '';
     togglePopupCards(popupAddCards);
 }); 
 buttonPopupClosedCards.addEventListener('click', () => togglePopupCards(popupAddCards)); 
 
 //добавление и сохранение карточки  
-createCardButton.addEventListener('click', (event) => { 
+buttonCreateCard.addEventListener('click', (event) => { 
     event.preventDefault(); 
-    addCardsToTemplate(inputName.value, inputLink.value); 
+    createCard(inputNamePlace.value, inputLinkImage.value); 
+    formElementReset.reset();
     togglePopupCards(popupAddCards);
 }) 
 //добавление карточек через template 
-function addCardsToTemplate(name, link) {
+function createCard(name, link) {
     const itemElement = templateCard.cloneNode(true); 
+    const imageCard = itemElement.querySelector('.element__image');
     itemElement.querySelector('.element__text').innerText = name;
-    itemElement.querySelector('.element__image').src = link; 
-    itemElement.querySelector('.element__image').alt = name;
-    addLike(itemElement);
+    imageCard.src = link; 
+    imageCard.alt = name;
+    addLikeToCard(itemElement);
     openFullScreenImage(itemElement);
     removeCard(itemElement);
-    elementsCards.insertBefore(itemElement, elementsCards.firstChild); 
+    addCar(itemElement);
+    return itemElement;
 }
 
+ function addCar(itemElement) {
+    elementsCards.insertBefore(itemElement, elementsCards.firstChild); 
+ }
+
 initialCards.forEach((item) => { 
-    const itemElement = addCardsToTemplate(item.name, item.link);
+    const itemElement = createCard(item.name, item.link);
 }); 
 
-function addLike(itemElement){
+function addLikeToCard(itemElement){
     itemElement.querySelector('.element__like').addEventListener('click', function(event){ 
     event.target.classList.toggle('element__like_active'); 
   }) 
 }
+
 function removeCard(itemElement) {
     const basketButton = itemElement.querySelector('.element__basket-button'); 
     basketButton.addEventListener('click', () => { 
@@ -80,19 +87,19 @@ function removeCard(itemElement) {
 }) 
 }
 
+const togglePopupFullScreen = (popupToToggleFullScreen) => popupToToggleFullScreen.classList.toggle('popup_opened'); 
+
 function openFullScreenImage(itemElement) { 
     const image = itemElement.querySelector('.element__image'); 
     const titleCaption = itemElement.querySelector('.element__text'); 
     image.addEventListener('click', () => { 
+    togglePopupFullScreen(popupFullScreen);
     imagePopupFullScreen.src = image.src; 
     textPopupFullScreen.textContent = titleCaption.textContent; 
-    popupFullScreen.classList.add('popup_opened'); 
 }); 
 } 
 
-function closePopupFullScreenModal() {
-    closePopupFullScreen.addEventListener('click', () => { 
-    popupFullScreen.classList.remove('popup_opened'); 
-}); 
-}
-closePopupFullScreenModal()
+popupCloseFullScreen.addEventListener('click', () => togglePopupFullScreen(popupFullScreen));
+
+ 
+
