@@ -22,7 +22,7 @@ const popupCloseFullScreen = popupFullScreen.querySelector(".popup__closed-butto
 
 function closePopupOnOverley(evt) {
   if (evt.target === evt.currentTarget) {
-    closePopup(document.querySelector(".popup_opened"));
+    closePopup(evt.target);
   }
 }
 
@@ -35,13 +35,13 @@ function closePopupOnEsc(evt) {
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupOnEsc);
-  popup.addEventListener("click", closePopupOnOverley);
+  popup.addEventListener("mousedown", closePopupOnOverley);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupOnEsc);
-  popup.removeEventListener("click", closePopupOnOverley);
+  popup.removeEventListener("mousedown", closePopupOnOverley);
 }
 
 buttonOpenEditProfileForm.addEventListener("click", () => {
@@ -69,7 +69,6 @@ buttonOpenAddCardForm.addEventListener("click", () => {
 buttonCloseAddCardForm.addEventListener("click", () =>
   closePopup(popupAddCards)
 );
-
 //добавление и сохранение карточки
 buttonCreateCard.addEventListener("click", (event) => {
   event.preventDefault();
@@ -77,6 +76,7 @@ buttonCreateCard.addEventListener("click", (event) => {
   addCard(itemElement);
   formElementReset.reset();
   closePopup(popupAddCards);
+  toggleButtonState([inputNamePlace, inputLinkImage], buttonCreateCard);
 });
 formElementReset.addEventListener("submit", buttonCreateCard);
 
@@ -103,9 +103,7 @@ initialCards.forEach((item) => {
 });
 
 function addLikeToCard(itemElement) {
-  itemElement
-    .querySelector(".element__like")
-    .addEventListener("click", function (event) {
+  itemElement.querySelector(".element__like").addEventListener("click", function (event) {
       event.target.classList.toggle("element__like_active");
     });
 }
