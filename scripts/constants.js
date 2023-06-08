@@ -26,22 +26,7 @@
   ];
 
 
-//   //добавление карточек через template
-// const elementsCards = document.querySelector('.elements');
-// const templateCard = document.querySelector('.card').content;
 
-
-// initialCards.forEach((item) => {
-//   const itemElement = templateCard.cloneNode(true);
-//   itemElement.querySelector('.element__text').innerText = item.name;
-//   itemElement.querySelector('.element__image').src = item.link;
-  
-
-//   itemElement.querySelector('.element__like').addEventListener('click', function(event){
-//     event.target.classList.toggle('element__like_active');
-//  })
-//  elementsCards.append(itemElement);
-// });
  
 
 

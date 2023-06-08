@@ -42,9 +42,11 @@
             <div class="popup__container">
                 <button class="popup__close-button" type="button"> <img class="popup__closed" src="images/Close_Icon.png" alt="Иконка закрытия"></button>
                 <h3 class="popup__header-text">Редактировать профиль</h3>
-                <form class="popup__input" name="form">
-                    <input name="name" type="text" class="popup__input-info popup__input-info_type_name" placeholder="Имя" required>
-                    <input name="hobby" type="text" class="popup__input-info popup__input-info_type_hobby" placeholder="Хобби" required>
+                <form class="popup__input" name="form" >
+                    <input name="name" type="text" id="title-name" class="popup__input-info popup__input-info_type_name" placeholder="Имя" required minlength="2" maxlength="40">
+                    <span id="title-name-error" class="popup__error_visible popup__span-error"></span>
+                    <input name="hobby" type="text" id="title-link" class="popup__input-info popup__input-info_type_hobby" placeholder="Хобби" required minlength="2" maxlength="200">
+                    <span id="title-link-error" class="popup__error_visible popup__span-error"></span>
                     <button type="submit" class="popup__input-button">
                         Сохранить
                     </button>
@@ -55,10 +57,12 @@
             <div class="popup__container">
                 <button class="popup__close-button" type="button"> <img class="popup__closed popup__closed-cards" src="images/Close_Icon.png" alt="Иконка закрытия"></button>
                 <h3 class="popup__header-text">Новое место</h3>
-                <form class="popup__input popup__input-reset" name="form">
-                    <input name="name" type="text" class="popup__input-info popup__input-info_type_place" placeholder="Название" autocomplete="off" required>
-                    <input name="link" type="text" class="popup__input-info popup__input-info_type_link" placeholder="Ссылка на картинку" autocomplete="off" required>
-                    <button type="submit" class="popup__input-button popup__input-button-create">
+                <form class="popup__input popup__input-reset" name="form" >
+                    <input name="name" type="text" id="title-place" class="popup__input-info popup__input-info_type_place" placeholder="Название" autocomplete="off" required minlength="2" maxlength="30">
+                    <span id="title-place-error" class="popup__error_visible popup__span-error"></span>
+                    <input name="link" type="url" id="link" class="popup__input-info popup__input-info_type_link" placeholder="Ссылка на картинку" autocomplete="off" required>
+                    <span id="link-error" class="popup__error_visible popup__span-error"></span>
+                    <button disabled type="submit" class="popup__input-button popup__input-button-create popup__input-button_disabled">
                         Создать
                     </button>
                 </form>
@@ -86,6 +90,7 @@
     </div>
     <script type="module" src="scripts/index.js"></script>
     <script src="scripts/constants.js"></script>
+    <script src="scripts/validate.js"></script>
 </body>
 
 </html>
