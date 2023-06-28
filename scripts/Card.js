@@ -83,7 +83,6 @@ export class Card {
     closePopup(popupAddCards);
   }
 
-
   generateCard() {
     this._element = this._getTemplete();
     this._element.querySelector(".element__image").src = this._link;

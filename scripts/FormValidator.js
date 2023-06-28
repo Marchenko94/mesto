@@ -53,8 +53,6 @@ export class FormValidator {
     }
   };
 
-
-
      enableValidation() {
         const formList = document.querySelectorAll(this._formSelector);
         formList.forEach((form) => {

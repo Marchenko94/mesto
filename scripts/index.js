@@ -1,7 +1,6 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
-
 const modalData = {
   inputSelector: ".popup__input-info",
   submitButtonSelector: ".popup__input-button",
@@ -9,7 +8,6 @@ const modalData = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__span-error",
 }
-
 
 const buttonOpenEditProfileForm = document.querySelector(".profile__popup-opened");
 const buttonCloseEditProfileForm = document.querySelector(".popup__closed");
@@ -72,7 +70,6 @@ function submitEditProfileForm(evt) {
 }
 formEditProfile.addEventListener("submit", submitEditProfileForm);
 
-
 //добавление и сохранение карточки
 buttonCreateCard.addEventListener("click", (event) => {
   event.preventDefault();
@@ -87,7 +84,6 @@ formElementReset.addEventListener("submit", buttonCreateCard);
 
 const firstFormValidation = new FormValidator(modalData, ".popup__input");
 firstFormValidation.enableValidation();
-
 
 initialCards.forEach((item) => {
   const name = item.name;
