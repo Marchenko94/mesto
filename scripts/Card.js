@@ -1,13 +1,7 @@
 import {
   openPopup,
-  closePopup,
   imagePopupFullScreen,
-  popupCloseFullScreen,
-  popupFullScreen,
-  buttonOpenAddCardForm,
-  buttonCloseAddCardForm,
-  popupAddCards,
-  elementsCards
+  popupFullScreen
 } from "./index.js";
 
 export class Card {
@@ -30,57 +24,28 @@ export class Card {
     this._addLikeToCard();
     this._removeCard();
     this._openFullScreenImage();
-    this._closeFullScreenPopup();
   }
 
   _addLikeToCard() {
-    this._element
-      .querySelector(".element__like")
+    this._like
       .addEventListener("click", function (event) {
         event.target.classList.toggle("element__like_active");
       });
   }
 
   _removeCard() {
-    const basketButton = this._element.querySelector(".element__basket-button");
-    basketButton.addEventListener("click", () => {
-      basketButton.closest(".element").remove();
+    this._basketButton.addEventListener("click", () => {
+      this._basketButton.closest(".element").remove();
     });
   }
 
   _openFullScreenImage() {
-    const image = this._element.querySelector(".element__image");
-    const titleCaption = this._element.querySelector(".element__text");
-    image.addEventListener("click", () => {
+    this._image.addEventListener("click", () => {
       openPopup(popupFullScreen);
-      imagePopupFullScreen.src = image.src;
-      imagePopupFullScreen.alt = titleCaption.textContent;
-      popupFullScreen.querySelector(".popup__text").textContent =
-        titleCaption.textContent;
+      imagePopupFullScreen.src = this._image.src;
+      imagePopupFullScreen.alt = this._titleCaption.textContent;
+      this._sign.textContent = this._titleCaption.textContent;
     });
-  }
-
-  _closeFullScreenPopup() {
-    popupCloseFullScreen.addEventListener("click", () =>
-      closePopup(popupFullScreen)
-    );
-  }
-
-  _openButtonAddCardForm() {
-    buttonOpenAddCardForm.addEventListener("click", () => {
-      openPopup(popupAddCards);
-    });
-  }
-
-  _closeButtonAddCardForm() {
-    buttonCloseAddCardForm.addEventListener("click", () => {
-      closePopup(popupAddCards);
-    });
-  }
-
-  _addCard() {
-    elementsCards.insertBefore(this._element, elementsCards.firstChild);
-    closePopup(popupAddCards);
   }
 
   generateCard() {
@@ -88,10 +53,12 @@ export class Card {
     this._element.querySelector(".element__image").src = this._link;
     this._element.querySelector(".element__image").alt = this._name;
     this._element.querySelector(".element__text").textContent = this._name;
+    this._sign = popupFullScreen.querySelector(".popup__text");
+    this._like = this._element.querySelector(".element__like");
+    this._basketButton = this._element.querySelector(".element__basket-button");
+    this._image = this._element.querySelector(".element__image");
+    this._titleCaption = this._element.querySelector(".element__text");
     this._setEventListeners();
-    this._openButtonAddCardForm();
-    this._closeButtonAddCardForm();
-    this._addCard();
     return this._element;
   }
 }
