@@ -26,25 +26,37 @@ export class Card {
     this._openFullScreenImage();
   }
 
+  _toggleLike(event){
+    event.target.classList.toggle("element__like_active"); 
+}
+
   _addLikeToCard() {
     this._like
-      .addEventListener("click", function (event) {
-        event.target.classList.toggle("element__like_active");
-      });
+      .addEventListener("click", (event) => {
+        this._toggleLike(event);
+    });
   }
+
+  _deleteCard(){
+    this._basketButton.closest(".element").remove(); 
+}
 
   _removeCard() {
     this._basketButton.addEventListener("click", () => {
-      this._basketButton.closest(".element").remove();
+      this._deleteCard();    
     });
+  }
+
+  _handleImageClick() {
+    imagePopupFullScreen.src = this._image.src;
+    imagePopupFullScreen.alt = this._titleCaption.textContent;
+    this._sign.textContent = this._titleCaption.textContent;
   }
 
   _openFullScreenImage() {
     this._image.addEventListener("click", () => {
       openPopup(popupFullScreen);
-      imagePopupFullScreen.src = this._image.src;
-      imagePopupFullScreen.alt = this._titleCaption.textContent;
-      this._sign.textContent = this._titleCaption.textContent;
+      this._handleImageClick();
     });
   }
 

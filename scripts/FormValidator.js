@@ -41,6 +41,16 @@ export class FormValidator {
     });
   }
 
+  _setEventListener() {
+    this._inputList.forEach((input) => {
+      const formError = document.querySelector(`#${input.id}-error`);
+      input.addEventListener("input", () => {
+        this._checkIsValid(input, formError);
+        this.toggleButtonState();
+      });
+    });
+  }
+
   // Функция принимает массив полей ввода и элемент кнопки, состояние которой нужно менять
   toggleButtonState() {
     // Если есть хотя бы один невалидный инпут
@@ -66,10 +76,8 @@ export class FormValidator {
 
   enableValidation() {
     this._inputList.forEach((input) => {
-      const formError = document.querySelector(`#${input.id}-error`);
       input.addEventListener("input", () => {
-        this._checkIsValid(input, formError);
-        this.toggleButtonState();
+        this._setEventListener();
       });
     });
   }

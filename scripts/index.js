@@ -106,7 +106,7 @@ buttonCreateCard.addEventListener("click", (event) => {
   const link = inputLinkImage.value;
   formElementReset.reset();
   closePopup(popupAddCards);
-  const itemElement = new Card({ name, link }, ".card").generateCard();
+  const itemElement = createCard({ name, link });
   addCard(itemElement);
 });
 formElementReset.addEventListener("submit", buttonCreateCard);
@@ -115,9 +115,14 @@ function addCard(itemElement) {
   elementsCards.insertBefore(itemElement, elementsCards.firstChild);
 }
 
+function createCard({ name, link }) {
+  // тут создаете карточку и возвращаете ее
+  return new Card({ name, link }, ".card").generateCard(); 
+}
+
 initialCards.forEach((item) => {
   const name = item.name;
   const link = item.link;
-  const itemElement = new Card({ name, link }, ".card").generateCard();
+  const itemElement = createCard({ name, link });
   addCard(itemElement);
 });
